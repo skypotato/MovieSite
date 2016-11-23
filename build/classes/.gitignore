@@ -1,1 +1,6 @@
-/dao/
+/action/
+/db/
+/snippet/
+/controller/
+/svc/
+/vo/
