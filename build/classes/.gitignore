@@ -1,6 +1,6 @@
 /action/
-/db/
-/snippet/
 /controller/
+/dao/
+/db/
 /svc/
 /vo/

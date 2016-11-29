@@ -17,7 +17,7 @@ public class JdbcUtil {
 			/* Resource 정의에 관한 Context를 얻어오는 부분 */
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			/* context.xml에 정의한 DataSource 객체를 얻어 오는 부분 */
-			DataSource ds = (DataSource) envCtx.lookup("jdbc/movieSite");
+			DataSource ds = (DataSource) envCtx.lookup("jdbc/MovieSiteDB");
 			con = ds.getConnection();
 			con.setAutoCommit(false);
 		} catch (Exception e) {

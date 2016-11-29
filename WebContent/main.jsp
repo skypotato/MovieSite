@@ -1,3 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<h2>웹 어플리케이션 제작중</h2>
+<%
+	request.setAttribute("top", "/top.jsp");
+	request.setAttribute("center", "/movie/movieChart.jsp");
+	request.setAttribute("bottom", "/bottom.jsp");
+%>
+<jsp:forward page="/template.jsp" />

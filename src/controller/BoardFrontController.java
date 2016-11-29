@@ -9,27 +9,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.MemberLogOutAction;
+import action.MemberLoginAction;
+import action.MovieJSONAction;
 import vo.ActionForward;
 
-@WebServlet("*.bo")
+@WebServlet("*.do")
 public class BoardFrontController extends javax.servlet.http.HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("EUC-KR");
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
 		ActionForward forward = null;
 		Action action = null;
 
-		/*
-		 * if(command.equals("/boardWriteForm.bo")){ forward=new
-		 * ActionForward(); forward.setPath("/board/qna_board_write.jsp"); }else
-		 * if(command.equals("/boardWritePro.bo")){
-		 * 
-		 * }
-		 */
+		if (command.equals("/main.do")) {
+			action = new MovieJSONAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/login.do")) {
+			action = new MemberLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/logout.do")){
+			action = new MemberLogOutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		if (forward != null) {
 
 			if (forward.isRedirect()) {
