@@ -1,0 +1,41 @@
+.regForm {
+	position: relative;
+	width: 500px;
+	margin: 0 auto;
+}
+
+.regForm .box {
+	width: 500px
+}
+
+.regForm .box .iText {
+	width: 85%;
+	<!--width: 250px;-->
+	margin: 3px 0;
+	padding: 2px 5px;
+	border: 1px solid #e1e1e1
+}
+
+.regForm .box p span, .regForm .box p input {
+	height: 18px;
+	font-size: 11px;
+	color: #737373;
+	line-height: 18px;
+	vertical-align: middle
+}
+
+.regForm .joinBtn {
+	display: block;
+	position: absolute;
+	width: 100%;
+	<!--width: 360px;-->
+	height: 1px;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 14px;
+	color: #fff;
+	line-height: 5px;
+	text-align: center;
+	text-shadow: 1px 1px 1px #004773;
+	background: #333
+}
