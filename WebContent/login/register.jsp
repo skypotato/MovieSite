@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="regForm" align="center">
-		<form name="regFrm" method="post" action="registerformProc.jsp">
+		<form name="regFrm" method="post" action="/MovieSite/insertMember.do">
 			<div class="box" align="left">
 				<h3>
 					<b>회원가입</b>

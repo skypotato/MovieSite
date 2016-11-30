@@ -30,7 +30,7 @@
 				} else {
 			%>
 		
-		<form method="post" name="login" action="../login.do">
+		<form method="post" name="login" action="/MovieSite/login.do">
 			<div class="box">
 				<input type="text" name="id" class="iText" placeholder="아이디를 입력하세요"><br>
 				<input type="password" name="pass" class="iText" placeholder="비밀번호를 입력하세요"><br>

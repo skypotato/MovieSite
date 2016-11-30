@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 
 import vo.MovieChart;
 
-public class MovieJSONService {
+public class MovieChartJSONService {
 
 	public ArrayList<MovieChart> parsingJSON() throws Exception {
 		// TODO Auto-generated method stub

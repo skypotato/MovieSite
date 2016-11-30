@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.MemberInsertAction;
 import action.MemberLogOutAction;
 import action.MemberLoginAction;
-import action.MovieJSONAction;
+import action.MovieChartJSONAction;
 import vo.ActionForward;
 
 @WebServlet("*.do")
@@ -27,7 +28,7 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 		Action action = null;
 
 		if (command.equals("/main.do")) {
-			action = new MovieJSONAction();
+			action = new MovieChartJSONAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -42,6 +43,13 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			}
 		}else if(command.equals("/logout.do")){
 			action = new MemberLogOutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/insertMember.do")){
+			action = new MemberInsertAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

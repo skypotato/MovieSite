@@ -13,25 +13,24 @@ public class MemberInsertAction implements Action {
 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-	 	ActionForward forward = null;
+	 	ActionForward forward = new ActionForward();
 		MemberBean article = new MemberBean();
 		article.setId(request.getParameter("id"));
 		article.setName(request.getParameter("name"));
 		article.setPass(request.getParameter("pass"));
 		article.setPhone(request.getParameter("phone"));
+		
 		MemberInsertService memberInsertService = new MemberInsertService();
 		boolean isRegisterSuccess = memberInsertService.registerArticle(article);
 
 		if (isRegisterSuccess) {
-			forward = new ActionForward();
-			forward.setRedirect(true);
-			forward.setPath("main.do?");
+			forward.setPath("/login/loginform.jsp");
 		} else {
 			response.setContentType("text/html;charset=EUC-KR");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('등록실패')");
-			out.println("history.back()");
+			out.println("alert('회원가입실패')");
+			out.println("history.back();");
 			out.println("</script>");
 		}
 
