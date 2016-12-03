@@ -1,5 +1,5 @@
-body {
-	<!--background: #cacaca;-->
+body {<!--
+	background: #cacaca; -->
 	margin: 0;
 	padding: 20px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
@@ -18,11 +18,11 @@ body {
 .caption {
 	display: block;
 	width: 100%;
-	background: #fff;
-	<!--background: #64e0ef;-->
+	background: #fff; <!--
+	background: #64e0ef; -->
 	height: 55px;
-	padding-left: 10px;
-	<!--color: #fff;-->
+	padding-left: 10px; <!--
+	color: #fff; -->
 	color: #000;
 	font-size: 20px;
 	line-height: 55px;

@@ -5,18 +5,20 @@ public class MovieChart {
 	String rank;
 	String movieCd; // movie번호
 	String movieNm; // movie이름
+	String image;
 	String openDt; // 개봉일
 	String salesAcc; // 누적매출액
 	String audiAcc; // 누적관객수
 	String scrnCnt; // 스크린수
 	String showCnt; // 상영횟수
-	
+
 	public MovieChart() {
 		super();
 		this.rnum = null;
 		this.rank = null;
 		this.movieCd = null;
 		this.movieNm = null;
+		this.image = null;
 		this.openDt = null;
 		this.salesAcc = null;
 		this.audiAcc = null;
@@ -24,13 +26,14 @@ public class MovieChart {
 		this.showCnt = null;
 	}
 
-	public MovieChart(String rnum, String rank, String movieCd, String movieNm, String openDt, String salesAcc,
-			String audiAcc, String scrnCnt, String showCnt) {
+	public MovieChart(String rnum, String rank, String movieCd, String movieNm, String image, String openDt,
+			String salesAcc, String audiAcc, String scrnCnt, String showCnt) {
 		super();
 		this.rnum = rnum;
 		this.rank = rank;
 		this.movieCd = movieCd;
 		this.movieNm = movieNm;
+		this.image = image;
 		this.openDt = openDt;
 		this.salesAcc = salesAcc;
 		this.audiAcc = audiAcc;
@@ -68,6 +71,14 @@ public class MovieChart {
 
 	public void setMovieNm(String movieNm) {
 		this.movieNm = movieNm;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getOpenDt() {
@@ -109,5 +120,5 @@ public class MovieChart {
 	public void setShowCnt(String showCnt) {
 		this.showCnt = showCnt;
 	}
-	
+
 }

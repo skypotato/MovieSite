@@ -16,15 +16,29 @@
 <title>JSON 파싱</title>
 </head>
 <body>
+	<div align="center" style="padding: 10px">
+		<a href="">예매</a> | <a href="">영화</a> | <a href="">상영시간 조회</a>
+	</div>
+	<%
+		if (movieCharts != null) {
+	%>
+	<div align="center">
+		<%
+			for (int i = 0; i < movieCharts.size(); i++) {
+		%>
+			<span><img src="<%=movieCharts.get(i).getImage()%>"/></span>
+		<%
+			} // end for
+		%>
+	</div>
 	<div class="caption"># 영화랭킹(일간순위) #</div>
 	<div id="table">
-		<%
-			if (movieCharts != null) {
-		%>
-		<div class="header-row row">
-			<span class="cell">순위</span> <span class="cell primary">이름</span> <span
-				class="cell">개봉일</span> <span class="cell">누적관객수</span> <span
-				class="cell">누적매출액</span>
+		<div class="header-row row" >
+			<span class="cell">순위</span>
+			<span class="cell primary">이름</span>
+			<span class="cell">개봉일</span>
+			<span class="cell">누적관객수</span>
+			<span class="cell">누적매출액</span>
 		</div>
 		<%
 			for (int i = 0; i < movieCharts.size(); i++) {
@@ -37,10 +51,12 @@
 			<span class="cell" data-label="누적매출액"><%=movieCharts.get(i).getSalesAcc()%></span>
 		</div>
 		<%
-			}
-			}
+			} // end for
 		%>
 	</div>
+	<%
+		} // end if
+	%>
 </body>
 </html>
 

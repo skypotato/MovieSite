@@ -13,6 +13,7 @@ import action.MemberInsertAction;
 import action.MemberLogOutAction;
 import action.MemberLoginAction;
 import action.MovieChartJSONAction;
+import action.MovieNaverJSONAction;
 import vo.ActionForward;
 
 @WebServlet("*.do")
@@ -53,6 +54,13 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/movieDetail.do")){
+			action = new MovieNaverJSONAction();
+			try{
+				forward = action.execute(request, response);
+			}catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
