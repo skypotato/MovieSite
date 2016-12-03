@@ -16,13 +16,10 @@
 <title>JSON 파싱</title>
 </head>
 <body>
-	<div align="center" style="padding: 10px">
-		<a href="">예매</a> | <a href="">영화</a> | <a href="">상영시간 조회</a>
-	</div>
 	<%
 		if (movieCharts != null) {
 	%>
-	<div align="center">
+	<div align="center" style="padding: 10px">
 		<%
 			for (int i = 0; i < movieCharts.size(); i++) {
 		%>

@@ -10,16 +10,14 @@
 <title>MovieSite</title>
 </head>
 <body>
-	<table style="width: 100%; height: 100%">
-		<tr height="8%" bgcolor="#FFBB00">
-			<td><jsp:include page="<%=top%>" /></td>
-		</tr>
-		<tr>
-			<td><jsp:include page="<%=center%>" flush="false" /></td>
-		</tr>
-		<tr height="10%" bgcolor="#FFBB00">
-			<td><jsp:include page="<%=bottom%>" /></td>
-		</tr>
-	</table>
+	<div style="height: 8% auto; background-color: #FFBB00">
+		<jsp:include page="<%=top%>" />
+	</div>
+	<div style="min-height: 84%;">
+		<jsp:include page="<%=center%>" flush="false" />
+	</div>
+	<div style="height: 8% auto; background-color: #FFBB00">
+		<jsp:include page="<%=bottom%>" />
+	</div>
 </body>
 </html>
