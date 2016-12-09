@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.MemberIDcheckAction;
 import action.MemberInsertAction;
 import action.MemberLogOutAction;
 import action.MemberLoginAction;
@@ -61,6 +62,13 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			try{
 				forward = action.execute(request, response);
 			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/idCheck.do")){
+			action = new MemberIDcheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

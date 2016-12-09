@@ -1,31 +1,30 @@
-function inputCheck(){
-	if(document.regFrm.id.value==""){
+function inputCheck() {
+	if (document.regFrm.id.value == "") {
 		alert("ID를 입력 해주세요.");
 		document.regFrm.id.focus();
 		return;
-	}else if(document.regFrm.pass.value==""){
+	} else if (document.regFrm.pass.value == "") {
 		alert("패스워드를 입력 해주세요.");
 		document.regFrm.pass.focus();
-		return; 
-	}else if(document.regFrm.repass.value==""){
+		return;
+	} else if (document.regFrm.repass.value == "") {
 		alert("패스워드 확인을 해주세요.");
 		document.regFrm.repass.focus();
 		return;
-	}else if(document.regFrm.pass.value != document.regFrm.repass.value){
+	} else if (document.regFrm.pass.value != document.regFrm.repass.value) {
 		alert("패스워드확인이 일치하지 않습니다.");
-		document.regFrm.repass.value="";
-		document.regFrm.repass.focus(); 
+		document.regFrm.repass.value = "";
+		document.regFrm.repass.focus();
 		return;
-	}else if(document.regFrm.name.value==""){
+	} else if (document.regFrm.name.value == "") {
 		alert("이름을 입력 해주세요.");
 		document.regFrm.name.focus();
 		return;
-	}else if(document.regFrm.phone.value==""){
+	} else if (document.regFrm.phone.value == "") {
 		alert("핸드폰 번호를 입력 해주세요.");
 		document.regFrm.name.focus();
 		return;
 	}
-
 	document.regFrm.submit();
 }
 
@@ -50,9 +49,7 @@ function idCheck(id) {
 		frm.id.focus();
 		return;
 	}
-	url = "idCheck.jsp?id=" + id;
-	window.open(url, "IDCheck", "width=300,height=150");
-
+	location.href="/MovieSite/idCheck.do?id="+id;
 }
 
 function win_close() {

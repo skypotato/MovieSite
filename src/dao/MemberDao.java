@@ -33,28 +33,20 @@ public class MemberDao {
 	/* ID 중복확인 */
 	public boolean checkID(String id) {
 
-		boolean result = false;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String sql = null;
-
+		boolean result = false;
 		try {
-			System.out.println("getConnection");
 			sql = "select id from tblMember where id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-
-			result = rs.next();
-		} catch (Exception ex) {
-			System.out.println("checkID 에러: " + ex);
+			result = pstmt.executeQuery().next();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
-			close(rs);
 			close(pstmt);
 		}
-
 		return result;
-
 	}
 
 	/* 회원가입 */

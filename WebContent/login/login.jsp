@@ -4,7 +4,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/MovieSite/css/login.css">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<script type="text/javascript" src="/MovieSite/script/script.js" charset='EUC-KR'></script>
+<script type="text/javascript" src="/MovieSite/script/script.js" charset='EUC-KR'>
+</script>
 <title>로그인</title>
 <%
 	request.setCharacterEncoding("euc-kr");

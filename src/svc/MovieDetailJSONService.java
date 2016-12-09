@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 
 import vo.MovieList;
 
-public class MovieListJSONService {
+public class MovieDetailJSONService {
 
 	public ArrayList<MovieList> parsingJSON(int page, String movieNm, String directorNm) throws Exception {
 		// TODO Auto-generated method stub
@@ -28,7 +28,6 @@ public class MovieListJSONService {
 			JSONObject entity = (JSONObject) movieLists.get(i);
 
 			MovieList movieList = new MovieList();
-			movieList.setMovieCd((String) entity.get("movieCd"));
 			movieList.setMovieNm((String) entity.get("movieNm"));
 			movieList.setPrdtYear((String) entity.get("prdtYear"));
 			movieList.setTypeNm((String) entity.get("typeNm"));
@@ -70,7 +69,7 @@ public class MovieListJSONService {
 		String key = "633a7091e0acaedfdcc1d858724bc56e";
 		String result = null;
 
-		String apiURL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json" + "?key=" + key
+		String apiURL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json" + "?key=" + key
 				+ "&curPage=" + page + "&movieNm=" + movieNm + "&directorNm=" + directorNm;
 		URL url = new URL(apiURL);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
