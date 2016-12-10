@@ -1,12 +1,36 @@
 GRANT ALL PRIVILEGES ON *.*  TO 'javaDB'@'localhost 'IDENTIFIED BY 'javaDB' WITH GRANT OPTION;
 show databases;
-drop database movie_db;
-create database movie_db;
+DROP database movie_db;
+CREATE database movie_db;
 use movie_db;
+DROP TABLE tblMember;
 CREATE TABLE `tblMember` (
-  `id` varchar(20) NOT NULL,
-  `pass` varchar(20) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `phone` varchar(20) NOT NULL,
+  `id` VARCHAR(20) NOT NULL,
+  `pass` VARCHAR(20) NOT NULL,
+  `name` VARCHAR(20) NOT NULL,
+  `phone` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`)
+);
+INSERT tblMember(id,pass,name,phone) VALUES('admin','admin','관리자','01011111111');
+
+DROP TABLE theater;
+CREATE TABLE `theater` (
+  `theaterNum` int (20) NOT NULL,
+  PRIMARY KEY (`theaterNum`)
+);
+DROP TABLE seat;
+CREATE TABLE `seat` (
+  `seatNum` int (20) NOT NULL,
+  `theaterNum` int (20) NOT NULL,
+  `state` int(20) NOT NULL default 0,
+  FOREIGN KEY (theaterNum) references theater(theaterNum),
+  PRIMARY KEY (`seat_id`,`theaterNum`)
+);
+DROP TABLE time_info;
+CREATE TABLE `time_info` (
+  `time_id` int (20) NOT NULL auto_increment,
+  `movieCd` int (20) NOT NULL,
+  `startTime` datetime NOT NULL,
+  `endTime` datetime NOT NULL,
+  PRIMARY KEY (`time_id`)
 );

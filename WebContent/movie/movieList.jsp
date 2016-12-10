@@ -47,7 +47,11 @@
 				for (int i = 0; i < movieLists.size(); i++) {
 		%>
 		<div class="row">
-			<span class="cell primary" data-label="이름"><%=movieLists.get(i).getMovieNm()%></span>
+			<span class="cell primary" data-label="이름">
+			<a href=""+<%=movieLists.get(i).getMovieCd() %>>
+			<%=movieLists.get(i).getMovieNm()%>
+			</a>
+			</span>
 			<span class="cell" data-label="제작연도"><%=movieLists.get(i).getPrdtYear()%></span>
 			<span class="cell" data-label="유형"><%=movieLists.get(i).getTypeNm()%></span>
 			<span class="cell" data-label="장르"><%=movieLists.get(i).getRepGenreNm()%></span>
