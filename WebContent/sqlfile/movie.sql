@@ -16,6 +16,7 @@ INSERT tblMember(id,pass,name,phone) VALUES('admin','admin','관리자','0101111
 DROP TABLE theater;
 CREATE TABLE `theater` (
   `theaterNum` int (20) NOT NULL,
+  `totalSeat` int (20) NOT NULL,
   PRIMARY KEY (`theaterNum`)
 );
 DROP TABLE seat;
@@ -30,7 +31,12 @@ DROP TABLE time_info;
 CREATE TABLE `time_info` (
   `time_id` int (20) NOT NULL auto_increment,
   `movieCd` int (20) NOT NULL,
-  `startTime` datetime NOT NULL,
-  `endTime` datetime NOT NULL,
+  `movieNm` VARCHAR(20) NOT NULL,
+  `theaterNum` int (20) NOT NULL,
+  `startDate` datetime NOT NULL,
+  `endDate` datetime NOT NULL,
+  `startTime` VARCHAR(20) NOT NULL,
+  `endTime` VARCHAR(20) NOT NULL,
+  FOREIGN KEY (theaterNum) references theater(theaterNum),
   PRIMARY KEY (`time_id`)
 );

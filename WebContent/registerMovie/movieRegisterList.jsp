@@ -3,10 +3,12 @@
 <%@ page import="vo.MovieList"%>
 <%@ page import="vo.PageInfo"%>
 <%@ page import="java.util.*"%>
+<%@ page import="java.net.*"%>
 
 <%
 	request.setCharacterEncoding("EUC-KR");
 	ArrayList<MovieList> movieLists = (ArrayList<MovieList>) request.getAttribute("movieLists");
+	MovieList movie;
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 
 	int currentPage = pageInfo.getPage();
@@ -26,32 +28,32 @@
 <body>
 	<div align="left">
 		<form action="/MovieSite/movieList.do" accept-charset="utf-8">
-		<select name="mode">
-			<option value="movieNm">영화명</option>
-			<option value="director">감독명</option>
-		</select>
-		<input type="text" name="searchText" style="width: 200px" placeholder="검색키워드를 입력하시기 바랍니다." />
-		<input type="submit" value="검색"/>
+			<select name="mode">
+				<option value="movieNm">영화명</option>
+				<option value="director">감독명</option>
+			</select> <input type="text" name="searchText" style="width: 200px"
+				placeholder="검색키워드를 입력하시기 바랍니다." /> <input type="submit" value="검색" />
 		</form>
 	</div>
 	<div id="table">
 		<div class="header-row row">
-			<span class="cell primary">이름</span>
-			<span class="cell">제작연도</span>
-			<span class="cell">유형</span>
-			<span class="cell">장르</span>
-			<span class="cell">감독</span>
+			<span class="cell primary">이름</span> <span class="cell">제작연도</span> <span
+				class="cell">유형</span> <span class="cell">장르</span> <span
+				class="cell">감독</span>
 		</div>
 		<%
 			if (movieLists != null) {
 				for (int i = 0; i < movieLists.size(); i++) {
+					movie = movieLists.get(i);
 		%>
 		<div class="row">
-			<span class="cell primary" data-label="이름"><%=movieLists.get(i).getMovieNm()%></span>
-			<span class="cell" data-label="제작연도"><%=movieLists.get(i).getPrdtYear()%></span>
-			<span class="cell" data-label="유형"><%=movieLists.get(i).getTypeNm()%></span>
-			<span class="cell" data-label="장르"><%=movieLists.get(i).getRepGenreNm()%></span>
-			<span class="cell" data-label="감독"><%=movieLists.get(i).getDirectors()%></span>
+			<span class="cell primary" data-label="이름">
+			<a href="/MovieSite/registerMovie/registerMovieform.jsp?movieCd=<%=movie.getMovieCd()%>&movieNm=<%=URLEncoder.encode(movie.getMovieNm(),"UTF-8")%>">
+			<%=movie.getMovieNm()%></a></span>
+			<span class="cell" data-label="제작연도"><%=movie.getPrdtYear()%></span>
+			<span class="cell" data-label="유형"><%=movie.getTypeNm()%></span>
+			<span class="cell" data-label="장르"><%=movie.getRepGenreNm()%></span>
+			<span class="cell" data-label="감독"><%=movie.getDirectors()%></span>
 		</div>
 		<%
 			} // end for

@@ -15,6 +15,9 @@ import action.MemberLogOutAction;
 import action.MemberLoginAction;
 import action.MovieChartJSONAction;
 import action.MovieListJSONAction;
+import action.MovieRegisterListJSONAction;
+import action.TimeInsertAction;
+import action.TimeListAction;
 import vo.ActionForward;
 
 @WebServlet("*.do")
@@ -43,28 +46,56 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/logout.do")){
+		} else if (command.equals("/logout.do")) {
 			action = new MemberLogOutAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/insertMember.do")){
+		} else if (command.equals("/insertMember.do")) {
 			action = new MemberInsertAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/movieList.do")){
+		} else if (command.equals("/movieList.do")) {
 			action = new MovieListJSONAction();
-			try{
+			try {
 				forward = action.execute(request, response);
-			}catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/idCheck.do")){
+		} else if (command.equals("/idCheck.do")) {
+			action = new MemberIDcheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/registerMovieList.do")) {
+			action = new MovieRegisterListJSONAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/registerTime.do")) {
+			action = new TimeInsertAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/timeList.do")) {
+			action = new TimeListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/userList.do")) {
 			action = new MemberIDcheckAction();
 			try {
 				forward = action.execute(request, response);

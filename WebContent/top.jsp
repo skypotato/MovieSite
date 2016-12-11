@@ -25,8 +25,8 @@
 %>
 <div align="center" style="padding: 10px; background: #fff;"> 
 	<a href="">예매율확인</a> |  
-	<a href="">영화관리</a> |
-	<a href="">회원목록</a> 
+	<a href="/MovieSite/registerMovieList.do">영화등록</a> |
+	<a href="/MovieSite/timeList.do">상영목록</a> 
 </div>
 <%	} else { %>
 <div align="center" style="padding: 10px; background: #fff;"> 

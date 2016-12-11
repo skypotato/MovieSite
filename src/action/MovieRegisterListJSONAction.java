@@ -1,24 +1,16 @@
 package action;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import svc.MovieListJSONService;
 import vo.ActionForward;
 import vo.MovieList;
 import vo.PageInfo;
 
-public class MovieDetailJSONAction implements Action {
+public class MovieRegisterListJSONAction implements Action {
 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -55,7 +47,7 @@ public class MovieDetailJSONAction implements Action {
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("movieLists", movieLists); // parameter°ª Àü´Þ
 
-		forward.setPath("/movie/movieListform.jsp");
+		forward.setPath("/registerMovie/movieRegisterListform.jsp");
 
 		return forward;
 

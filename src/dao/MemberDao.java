@@ -13,17 +13,17 @@ import vo.MemberBean;
 public class MemberDao {
 	DataSource ds;
 	Connection con;
-	private static MemberDao boardDAO;
+	private static MemberDao memberDAO;
 
 	private MemberDao() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public static MemberDao getInstance() {
-		if (boardDAO == null) {
-			boardDAO = new MemberDao();
+		if (memberDAO == null) {
+			memberDAO = new MemberDao();
 		}
-		return boardDAO;
+		return memberDAO;
 	}
 
 	public void setConnection(Connection con) {
