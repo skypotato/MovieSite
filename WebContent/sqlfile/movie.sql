@@ -21,11 +21,12 @@ CREATE TABLE `theater` (
 );
 DROP TABLE seat;
 CREATE TABLE `seat` (
-  `seatNum` int (20) NOT NULL,
+  `rowChar` CHAR (1) NOT NULL,
+  `columnNum` int (20) NOT NULL,
   `theaterNum` int (20) NOT NULL,
   `state` int(20) NOT NULL default 0,
   FOREIGN KEY (theaterNum) references theater(theaterNum),
-  PRIMARY KEY (`seat_id`,`theaterNum`)
+  PRIMARY KEY (`rowChar`, `columnNum`,`theaterNum`)
 );
 DROP TABLE time_info;
 CREATE TABLE `time_info` (
@@ -40,3 +41,37 @@ CREATE TABLE `time_info` (
   FOREIGN KEY (theaterNum) references theater(theaterNum),
   PRIMARY KEY (`time_id`)
 );
+DROP TABLE tiket_info;
+CREATE TABLE `tiket_info`(
+	`time_id` int(20) NOT NULL,
+	`id` VARCHAR(20) NOT NULL,
+    `seat_id` VARCHAR (100) NOT NULL,
+    `theaterNum` int (20) NOT NULL,
+    `movieNm` VARCHAR(100) NOT NULL,
+    `startTime` VARCHAR(20) NOT NULL,
+     PRIMARY KEY (`time_id`,`id`),
+	 FOREIGN KEY (time_id) references time_info(time_id) ON UPDATE CASCADE ON DELETE CASCADE,
+     FOREIGN KEY (id) references tblMember(id) ON UPDATE CASCADE ON DELETE CASCADE,
+     FOREIGN KEY (theaterNum) references theater(theaterNum) ON UPDATE CASCADE ON DELETE CASCADE
+);
+insert seat (rowChar,columnNum,theaterNum) values ('A',1,1);
+insert seat (rowChar,columnNum,theaterNum) values ('A',2,1);
+insert seat (rowChar,columnNum,theaterNum) values ('A',3,1);
+insert seat (rowChar,columnNum,theaterNum) values ('A',4,1);
+insert seat (rowChar,columnNum,theaterNum) values ('A',5,1);
+insert seat (rowChar,columnNum,theaterNum) values ('B',1,1);
+insert seat (rowChar,columnNum,theaterNum) values ('B',2,1);
+insert seat (rowChar,columnNum,theaterNum) values ('B',3,1);
+insert seat (rowChar,columnNum,theaterNum) values ('B',4,1);
+insert seat (rowChar,columnNum,theaterNum) values ('B',5,1);
+
+insert seat (rowChar,columnNum,theaterNum) values ('A',1,2);
+insert seat (rowChar,columnNum,theaterNum) values ('A',2,2);
+insert seat (rowChar,columnNum,theaterNum) values ('A',3,2);
+insert seat (rowChar,columnNum,theaterNum) values ('A',4,2);
+insert seat (rowChar,columnNum,theaterNum) values ('A',5,2);
+insert seat (rowChar,columnNum,theaterNum) values ('B',1,2);
+insert seat (rowChar,columnNum,theaterNum) values ('B',2,2);
+insert seat (rowChar,columnNum,theaterNum) values ('B',3,2);
+insert seat (rowChar,columnNum,theaterNum) values ('B',4,2);
+insert seat (rowChar,columnNum,theaterNum) values ('B',5,2);

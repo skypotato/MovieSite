@@ -30,7 +30,7 @@
 </div>
 <%	} else { %>
 <div align="center" style="padding: 10px; background: #fff;"> 
-	<a href="">예매</a> | 
+	<a href="/MovieSite/ticketMovieList.do">예매</a> | 
 	<a href="/MovieSite/movieList.do">영화</a> | 
 	<a href="">상영시간표</a>
 </div>

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import vo.MemberBean;
+import vo.Seat;
 import vo.TimeInfo;
 
 public class TimeDao {
@@ -61,6 +61,7 @@ public class TimeDao {
 		return insertCount;
 	}
 
+	/*¸ðµç »ó¿µÁ¤º¸ Ãâ·Â*/
 	public ArrayList<TimeInfo> listTime() {
 
 		PreparedStatement pstmt = null;
@@ -96,5 +97,82 @@ public class TimeDao {
 		}
 		return timeArr;
 	}
+	// ÇØ´ç¿µÈ­ ½Ã°£ ¸®½ºÆ®
+	public ArrayList<TimeInfo> listMvTime(TimeInfo timeInfo) {
 
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+
+		ArrayList<TimeInfo> timeArr = new ArrayList<TimeInfo>();
+
+		try {
+			System.out.println("getConnection");
+			sql = "select time_id,movieCd,theaterNum,startTime,endTime from time_info where movieCd=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, timeInfo.getMovieCd());
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				TimeInfo time = new TimeInfo();
+				time.setTime_id(rs.getInt("time_id"));
+				time.setMovieCd(rs.getInt("movieCd"));
+				time.setTheaterNum(rs.getInt("theaterNum"));
+				time.setStartTime(rs.getString("startTime"));
+				time.setEndTime(rs.getString("endTime"));
+				timeArr.add(time);
+			}
+
+		} catch (Exception ex) {
+			System.out.println("listTime ï¿½ï¿½ï¿½ï¿½: " + ex);
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return timeArr;
+	}
+	
+	public ArrayList<Seat> seatCheck(TimeInfo timeinfo) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		TimeInfo time = new TimeInfo();
+		ArrayList<Seat> seatlist = new ArrayList<Seat>();
+		
+		try {
+			
+			System.out.println("getConnection");
+			pstmt=con.prepareStatement("select * from time_info where time_id=?");
+			pstmt.setInt(1,timeinfo.getTime_id());
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				time.setTheaterNum(rs.getInt("theaterNum"));
+			}
+			
+			sql = "select * from seat where theaterNum=? ORDER BY rowChar";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,time.getTheaterNum());
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Seat seat = new Seat();
+				seat.setRowChar(rs.getString("rowChar").charAt(0));
+				seat.setColumnNum(rs.getInt("columnNum"));
+				seat.setTheaterNum(rs.getInt("theaterNum"));
+				seat.setState(rs.getInt("state"));
+				seatlist.add(seat);
+			}
+
+		} catch (Exception ex) {
+			System.out.println("listTime : " + ex);
+		} finally {
+			close(pstmt);
+			close(rs);
+			
+		}
+		return seatlist;
+	}
+	
 }

@@ -3,6 +3,7 @@
 <%@ page import="vo.MovieList"%>
 <%@ page import="vo.PageInfo"%>
 <%@ page import="java.util.*"%>
+<%@ page import="java.net.*" %>
 
 <%
 	request.setCharacterEncoding("EUC-KR");
@@ -15,6 +16,11 @@
 	int endPage = startPage + 9;
 	if (endPage > lastPage)
 		endPage = lastPage;
+	
+	String searchText = "";
+	if(request.getParameter("mode")!=null){
+		searchText = URLEncoder.encode(request.getParameter("searchText"));
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -68,7 +74,7 @@
 		<%
 			if (startPage > 1) {
 		%>
-		<a href="/MovieSite/movieList.do?page=<%=startPage - 1%>">이전페이지</a>
+		<a href="/MovieSite/movieList.do?mode=<%=request.getParameter("mode")%>&searchText=<%=searchText%>&page=<%=startPage - 1%>">이전페이지</a>
 		<%
 			}
 		%>
@@ -83,7 +89,7 @@
 		<%
 			} else {
 		%>
-		<a href="/MovieSite/movieList.do?page=<%=i%>"><%=i%></a>
+		<a href="/MovieSite/movieList.do?mode=<%=request.getParameter("mode")%>&searchText=<%=searchText%>&page=<%=i%>"><%=i%></a>
 		<%
 			}
 		%>
@@ -94,7 +100,7 @@
 		<%
 			if (endPage < lastPage) {
 		%>
-		<a href="/MovieSite/movieList.do?page=<%=endPage + 1%>">다음페이지</a>
+		<a href="/MovieSite/movieList.do?mode=<%=request.getParameter("mode")%>&searchText=<%=searchText%>&page=<%=endPage + 1%>">다음페이지</a>
 		<%
 			}
 		%>

@@ -10,7 +10,7 @@ import svc.TimeListService;
 import vo.ActionForward;
 import vo.TimeInfo;
 
-public class TimeListAction implements Action {
+public class TicketMovieListAction implements Action {
 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -21,7 +21,7 @@ public class TimeListAction implements Action {
 
 		if (timeArr!=null) {
 			request.setAttribute("timeArr", timeArr);
-			forward.setPath("/ticket/tiketingfrom.jsp");
+			forward.setPath("/ticket/ticketingform.jsp");
 		} else {
 			response.setContentType("text/html;charset=EUC-KR");
 			PrintWriter out = response.getWriter();

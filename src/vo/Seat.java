@@ -1,27 +1,37 @@
 package vo;
 
 public class Seat {
-	private int seatNum;
+	private char rowChar;
+	private int columnNum;
 	private int theaterNum;
-	private boolean state;
+	private int state;
 
 	public Seat() {
 		super();
 	}
 
-	public Seat(int seatNum, int theaterNum, boolean state) {
+	public Seat(char rowChar, int columnNum, int theaterNum, int state) {
 		super();
-		this.seatNum = seatNum;
+		this.rowChar = rowChar;
+		this.columnNum = columnNum;
 		this.theaterNum = theaterNum;
 		this.state = state;
 	}
 
-	public int getSeatNum() {
-		return seatNum;
+	public char getRowChar() {
+		return rowChar;
 	}
 
-	public void setSeatNum(int seatNum) {
-		this.seatNum = seatNum;
+	public void setRowChar(char rowChar) {
+		this.rowChar = rowChar;
+	}
+
+	public int getColumnNum() {
+		return columnNum;
+	}
+
+	public void setColumnNum(int columnNum) {
+		this.columnNum = columnNum;
 	}
 
 	public int getTheaterNum() {
@@ -32,11 +42,11 @@ public class Seat {
 		this.theaterNum = theaterNum;
 	}
 
-	public boolean isState() {
+	public int getState() {
 		return state;
 	}
 
-	public void setState(boolean state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 

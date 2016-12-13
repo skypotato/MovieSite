@@ -16,6 +16,10 @@ import action.MemberLoginAction;
 import action.MovieChartJSONAction;
 import action.MovieListJSONAction;
 import action.MovieRegisterListJSONAction;
+import action.TicketInsertAction;
+import action.TicketMovieListAction;
+import action.TicketSeatCheckAction;
+import action.TicketTimeListAction;
 import action.TimeInsertAction;
 import action.TimeListAction;
 import vo.ActionForward;
@@ -97,6 +101,34 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			}
 		} else if (command.equals("/userList.do")) {
 			action = new MemberIDcheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/ticketMovieList.do")) {
+			action = new TicketMovieListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/ticketTimeList.do")) {
+			action = new TicketTimeListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/seatList.do")) {
+			action = new TicketSeatCheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/tiketInsert.do")) {
+			action = new TicketInsertAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

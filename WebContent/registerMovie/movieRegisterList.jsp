@@ -9,14 +9,23 @@
 	request.setCharacterEncoding("EUC-KR");
 	ArrayList<MovieList> movieLists = (ArrayList<MovieList>) request.getAttribute("movieLists");
 	MovieList movie;
-	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
-
+	PageInfo pageInfo = null;
+	
+	if(request.getAttribute("pageInfo")!=null){
+		pageInfo=(PageInfo) request.getAttribute("pageInfo");
+	}
+	
 	int currentPage = pageInfo.getPage();
 	int lastPage = pageInfo.getTotCnt() / 10;
 	int startPage = (((int) ((double) currentPage / 10 + 0.9)) - 1) * 10 + 1;
 	int endPage = startPage + 9;
 	if (endPage > lastPage)
 		endPage = lastPage;
+
+	String searchText = "";
+	if(request.getParameter("mode")!=null){
+		searchText = URLEncoder.encode(request.getParameter("searchText"));
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,7 +36,7 @@
 </head>
 <body>
 	<div align="left">
-		<form action="/MovieSite/movieList.do" accept-charset="utf-8">
+		<form action="/MovieSite/registerMovieList.do" accept-charset="utf-8">
 			<select name="mode">
 				<option value="movieNm">영화명</option>
 				<option value="director">감독명</option>
@@ -70,7 +79,7 @@
 		<%
 			if (startPage > 1) {
 		%>
-		<a href="/MovieSite/movieList.do?page=<%=startPage - 1%>">이전페이지</a>
+		<a href="/MovieSite/registerMovieList.do?mode=<%=request.getParameter("mode")%>&searchText=<%=searchText%>&page=<%=startPage - 1%>">이전페이지</a>
 		<%
 			}
 		%>
@@ -85,7 +94,7 @@
 		<%
 			} else {
 		%>
-		<a href="/MovieSite/movieList.do?page=<%=i%>"><%=i%></a>
+		<a href="/MovieSite/registerMovieList.do?mode=<%=request.getParameter("mode")%>&searchText=<%=searchText%>&page=<%=i%>"><%=i%></a>
 		<%
 			}
 		%>
@@ -96,7 +105,7 @@
 		<%
 			if (endPage < lastPage) {
 		%>
-		<a href="/MovieSite/movieList.do?page=<%=endPage + 1%>">다음페이지</a>
+		<a href="/MovieSite/registerMovieList.do?mode=<%=request.getParameter("mode")%>&searchText=<%=searchText%>&page=<%=endPage + 1%>">다음페이지</a>
 		<%
 			}
 		%>
