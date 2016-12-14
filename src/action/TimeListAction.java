@@ -21,7 +21,7 @@ public class TimeListAction implements Action {
 
 		if (timeArr!=null) {
 			request.setAttribute("timeArr", timeArr);
-			forward.setPath("/ticket/tiketingfrom.jsp");
+			forward.setPath("/registerMovie/timeMovieListform.jsp");
 		} else {
 			response.setContentType("text/html;charset=EUC-KR");
 			PrintWriter out = response.getWriter();
