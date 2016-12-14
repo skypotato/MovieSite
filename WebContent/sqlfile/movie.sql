@@ -11,7 +11,6 @@ CREATE TABLE `tblMember` (
   `phone` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`)
 );
-INSERT tblMember(id,pass,name,phone) VALUES('admin','admin','관리자','01011111111');
 
 DROP TABLE theater;
 CREATE TABLE `theater` (
@@ -54,6 +53,13 @@ CREATE TABLE `tiket_info`(
      FOREIGN KEY (id) references tblMember(id) ON UPDATE CASCADE ON DELETE CASCADE,
      FOREIGN KEY (theaterNum) references theater(theaterNum) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+INSERT tblMember(id,pass,name,phone) VALUES('admin','admin','관리자','01011111111');
+
+insert theater(theaterNum,totalSeat) values('1','10');
+insert theater(theaterNum,totalSeat) values('2','10');
+insert theater(theaterNum,totalSeat) values('3','10');
+
 insert seat (rowChar,columnNum,theaterNum) values ('A',1,1);
 insert seat (rowChar,columnNum,theaterNum) values ('A',2,1);
 insert seat (rowChar,columnNum,theaterNum) values ('A',3,1);
