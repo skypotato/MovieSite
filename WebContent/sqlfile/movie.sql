@@ -3,7 +3,13 @@ show databases;
 DROP database movie_db;
 CREATE database movie_db;
 use movie_db;
+
+DROP TABLE tiket_info;
+DROP TABLE theater;
 DROP TABLE tblMember;
+DROP TABLE seat;
+DROP TABLE time_info;
+
 CREATE TABLE `tblMember` (
   `id` VARCHAR(20) NOT NULL,
   `pass` VARCHAR(20) NOT NULL,
@@ -12,13 +18,11 @@ CREATE TABLE `tblMember` (
   PRIMARY KEY (`id`)
 );
 
-DROP TABLE theater;
 CREATE TABLE `theater` (
   `theaterNum` int (20) NOT NULL,
   `totalSeat` int (20) NOT NULL,
   PRIMARY KEY (`theaterNum`)
 );
-DROP TABLE seat;
 CREATE TABLE `seat` (
   `rowChar` CHAR (1) NOT NULL,
   `columnNum` int (20) NOT NULL,
@@ -27,7 +31,6 @@ CREATE TABLE `seat` (
   FOREIGN KEY (theaterNum) references theater(theaterNum),
   PRIMARY KEY (`rowChar`, `columnNum`,`theaterNum`)
 );
-DROP TABLE time_info;
 CREATE TABLE `time_info` (
   `time_id` int (20) NOT NULL auto_increment,
   `movieCd` int (20) NOT NULL,
@@ -40,7 +43,6 @@ CREATE TABLE `time_info` (
   FOREIGN KEY (theaterNum) references theater(theaterNum),
   PRIMARY KEY (`time_id`)
 );
-DROP TABLE tiket_info;
 CREATE TABLE `tiket_info`(
 	`time_id` int(20) NOT NULL,
 	`id` VARCHAR(20) NOT NULL,
